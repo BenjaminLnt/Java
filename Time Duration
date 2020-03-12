@@ -1,0 +1,47 @@
+
+public class TimeDuration {
+
+	int heure, minute,seconde;
+	
+	public static void main(String[] args) {
+		new TimeDuration(87).toString();
+		new TimeDuration(0).toString();
+		new TimeDuration(7521).toString();
+		new TimeDuration(147852).toString();
+	}
+
+	  public TimeDuration(int sec){
+		  if (sec < 0) {
+			     // this gets caught in the catch block
+			     throw new IllegalArgumentException("Only Positive Numbers Please!"); 
+			}
+		  	try {
+				  seconde=sec;
+					if(seconde>3600)
+					{
+						heure=seconde/3600;
+						seconde=seconde%3600;
+					}
+					if(seconde>60)
+					{
+						minute=seconde/60;
+						seconde=seconde%60;
+					}
+		  		
+			} catch (IllegalArgumentException e) {
+			    System.out.println(e.getMessage());
+			}
+	  }
+
+	  public String toString() {
+		  if (heure!=0)
+			  System.out.println(heure + "h " + minute + "m " + seconde + "s");
+
+		  else if (minute!=0)
+			  System.out.println(minute + "m " + seconde + "s");
+		  
+		  else
+			  System.out.println(seconde + "s");
+		  return "";
+	  }
+}
